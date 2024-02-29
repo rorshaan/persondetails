@@ -1,0 +1,19 @@
+<%= turbo_stream_from 'details' %>
+
+<%= turbo_frame_tag 'details' do %>
+  <h2>Name: <%= person.name %></h2>
+  <h3>Title: <%= person.title %></h3>
+  <h3>Age: <%= person.age %></h3>
+  <%= turbo_frame_tag 'add_details' do %>
+    <%= link_to "Add details", new_person_detail_path(person), remote: true %>
+  <% end %>
+
+  <% details.each do |detail| %>
+    <div class="detail-item">
+      <h3>Email: <%= detail.email %></h3>
+      <h3>Phone: <%= detail.phone %></h3>
+      <%= link_to "Edit", edit_person_detail_path(person, detail), remote: true, data: { turbo_frame: 'add_details' }  %>
+      <%= link_to "Destroy", person_detail_path(person, detail), remote: true, data: { "turbo-method": "delete" } %>
+    </div>
+  <% end %>
+<% end %>

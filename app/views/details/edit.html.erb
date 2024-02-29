@@ -1,0 +1,6 @@
+<%= turbo_stream_from 'add_details' %>
+
+<%= turbo_frame_tag 'add_details' do %>
+  <h1>Editing detail</h1>
+  <%= render "form", detail: @detail %>
+<% end %>

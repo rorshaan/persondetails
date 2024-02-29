@@ -1,0 +1,5 @@
+<%= turbo_stream_from 'details' %>
+
+<%= turbo_frame_tag 'details' do %>
+  <%= render 'show', details: @details, person: @person %>
+<% end %>

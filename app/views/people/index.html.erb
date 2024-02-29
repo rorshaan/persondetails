@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="people-list">
+    <%= turbo_stream_from 'people' %>
+    <%= turbo_frame_tag 'people' do %>
+      <%= render "people", people: @people %>
+    <% end %>
+  </div>
+  <div class="person-details" id="person-details">
+    <%= turbo_frame_tag 'details' do %>
+      <% if @people.present? %>
+        <%= render 'show', details: @people.first.details, person: @people.first %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

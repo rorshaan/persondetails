@@ -1,0 +1,8 @@
+<h1>Persons</h1>
+<h3><%= link_to "Add Person", new_person_path, remote: true, data: { turbo_frame: 'details' } %></h3><br>
+
+<% people.each do |person| %>
+ <h3> <%= link_to person.name, person_path(person), remote: true, class: "person-link", data: { turbo_frame: 'details' } %></h3>
+  <%= link_to "Edit", edit_person_path(person), remote: true, data: { turbo_frame: 'details' } %>
+  <%= link_to "Destroy", person_path(person), remote: true, data: { "turbo-method": "delete" } %>
+<% end %>
